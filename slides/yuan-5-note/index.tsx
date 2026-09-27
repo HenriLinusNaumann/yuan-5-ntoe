@@ -4,6 +4,18 @@ import type { CSSProperties, ReactNode } from 'react';
 
 import noteFront from './assets/note-front.jpg';
 import noteBack from './assets/note-back.jpg';
+import pboc from './assets/pboc.jpg';
+import serie1 from './assets/serie1.jpg';
+import mao from './assets/mao.jpg';
+import mountTai from './assets/mount-tai.png';
+import narzisse from './assets/narzisse.jpg';
+import storyNote from './assets/story-note.png';
+import note2005 from './assets/note2005.jpg';
+import baozi from './assets/baozi.jpg';
+import arcade from './assets/arcade.jpg';
+import spiel from './assets/spiel.jpg';
+import tokens from './assets/tokens.webp';
+import gewinn from './assets/gewinn.jpg';
 
 /* ================= design system ================= */
 
@@ -348,164 +360,82 @@ const Agenda: Page = () => (
   </div>
 );
 
-/* ================= 03 · Geburt der Note ================= */
+/* ================= 03 · Geschichte hinter der Banknote · Teil 1 ================= */
 
-const TimelineEvent = ({
-  year,
-  title,
-  text,
-  last = false,
+const HistPanel = ({
+  src,
+  alt,
+  caption,
+  w,
+  h,
 }: {
-  year: string;
-  title: string;
-  text: string;
-  last?: boolean;
+  src: string;
+  alt: string;
+  caption: string;
+  w: number;
+  h: number;
 }) => (
-  <div style={{ display: 'flex', gap: 36 }}>
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div style={{ width: 18, height: 18, borderRadius: '50%', background: 'var(--osd-accent)', marginTop: 10 }} />
-      {!last && <div style={{ width: 3, flex: 1, background: panelLine, minHeight: 56 }} />}
-    </div>
-    <div style={{ paddingBottom: last ? 0 : 52 }}>
-      <div style={{ fontSize: 30, fontWeight: 800, color: 'var(--osd-accent)', letterSpacing: '0.04em' }}>{year}</div>
-      <div style={{ fontSize: 38, fontWeight: 700, margin: '6px 0 10px' }}>{title}</div>
-      <div style={{ fontSize: 30, color: muted, lineHeight: 1.45, maxWidth: 800 }}>{text}</div>
-    </div>
+  <div
+    style={{
+      background: panel,
+      border: `1px solid ${panelLine}`,
+      borderRadius: 26,
+      padding: 16,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      boxSizing: 'border-box',
+    }}
+  >
+    <img src={src} alt={alt} width={w} height={h} style={{ ...noteShadow, objectFit: 'cover', borderRadius: 14 }} />
+    <div style={{ fontSize: 23, color: muted, marginTop: 14, lineHeight: 1.35, textAlign: 'center' }}>{caption}</div>
   </div>
 );
 
-const Geburt: Page = () => (
+const Geschichte1: Page = () => (
   <div style={{ ...page, padding: `${PAD - 10}px ${PAD}px` }}>
     <Keyframes />
     <Backdrop>
       <Glow left={-220} top={560} size={680} color="rgba(139,92,246,0.16)" />
     </Backdrop>
-    <Eyebrow>Geschichte</Eyebrow>
-    <Heading>Vom Volksgeld zur lila Note</Heading>
-    <div style={{ display: 'flex', gap: 90, marginTop: 56, position: 'relative' }}>
-      <div style={{ flex: 1 }}>
-        <Steps>
-          <Step>
-            <TimelineEvent
-              year="1948"
-              title="Der Renminbi entsteht"
-              text="Die erste Serie des „Volksgeldes“ erscheint — der Fünf-Yuan-Schein ist von Anfang an dabei."
-            />
-          </Step>
-          <Step>
-            <TimelineEvent
-              year="1. Okt 1999"
-              title="Fünfte Serie startet"
-              text="Zum 50. Geburtstag der Volksrepublik. Der 5er dieser Serie folgt am 18. November 2002."
-            />
-          </Step>
-          <Step>
-            <TimelineEvent
-              year="5. Nov 2020"
-              title="Die neue 5-¥-Note"
-              text="Als letzter Wert der 2019er-Generation — mit neuartiger Drucktechnik gegen Fälscher."
-              last
-            />
-          </Step>
-        </Steps>
-      </div>
-      <div style={{ flex: '0 0 620px', display: 'flex', flexDirection: 'column', gap: 28, justifyContent: 'center' }}>
-        <img src={noteFront} alt="5-Yuan-Note 2020" width={600} height={280} style={noteShadow} />
-        <div style={{ display: 'flex', gap: 16 }}>
-          <div
-            style={{
-              flex: 1,
-              background: panel,
-              border: `1px solid ${panelLine}`,
-              borderRadius: 'var(--osd-radius)',
-              padding: '20px 24px',
-            }}
-          >
-            <div style={{ fontSize: 34, fontWeight: 800, color: 'var(--osd-accent)' }}>135 × 63 mm</div>
-            <div style={{ fontSize: 23, color: muted, marginTop: 4 }}>das kompakte Format</div>
-          </div>
-          <div
-            style={{
-              flex: 1,
-              background: panel,
-              border: `1px solid ${panelLine}`,
-              borderRadius: 'var(--osd-radius)',
-              padding: '20px 24px',
-            }}
-          >
-            <div style={{ fontSize: 34, fontWeight: 800, color: 'var(--osd-accent)' }}>Lila</div>
-            <div style={{ fontSize: 23, color: muted, marginTop: 4 }}>die Farbe des 5ers</div>
-          </div>
-        </div>
-      </div>
+    <Eyebrow>Die Geschichte hinter der Banknote</Eyebrow>
+    <Heading>Von der ersten bis zur fünften Serie</Heading>
+    <div style={{ display: 'flex', gap: 28, marginTop: 44, alignItems: 'flex-start', position: 'relative' }}>
+      <HistPanel src={pboc} alt="Volksbank Chinas — Zentrale Beijing" caption="Volksbank Chinas — die Zentralbank" w={452} h={339} />
+      <HistPanel src={serie1} alt="Banknote der 1. Renminbi-Serie" caption="1. Renminbi-Serie (ab 1948)" w={372} h={348} />
+      <HistPanel src={noteFront} alt="5-Yuan-Note der 5. Renminbi-Serie" caption="5. Renminbi-Serie — unsere 2020er Note" w={680} h={317} />
+    </div>
+    <div style={{ display: 'flex', gap: 18, marginTop: 44, position: 'relative', flexWrap: 'wrap' }}>
+      <Chip>1. Renminbi-Serie: 1948</Chip>
+      <Chip>5. Renminbi-Serie: seit 1999</Chip>
+      <Chip>Auflage 2005</Chip>
+      <Chip>Auflage 2020 — unsere Note</Chip>
     </div>
     <Footer />
   </div>
 );
 
-/* ================= 04 · Die Note, die zuletzt kam ================= */
+/* ================= 04 · Geschichte hinter der Banknote · Teil 2 ================= */
 
-const StatCard = ({
-  value,
-  label,
-  sub,
-  size = 104,
-}: {
-  value: string;
-  label: string;
-  sub: string;
-  size?: number;
-}) => (
-  <div
-    style={{
-      width: 536,
-      background: panel,
-      border: `1px solid ${panelLine}`,
-      borderRadius: 'var(--osd-radius)',
-      padding: '44px 40px',
-    }}
-  >
-    <div
-      style={{
-        fontFamily: 'var(--osd-font-display)',
-        fontSize: size,
-        fontWeight: 900,
-        lineHeight: 1.05,
-        letterSpacing: '-0.02em',
-        whiteSpace: 'nowrap',
-      }}
-    >
-      <span style={gradText}>{value}</span>
-    </div>
-    <div style={{ fontSize: 32, fontWeight: 700, marginTop: 22 }}>{label}</div>
-    <div style={{ fontSize: 24, color: muted, marginTop: 8 }}>{sub}</div>
-  </div>
-);
-
-const Spaet: Page = () => (
+const Geschichte2: Page = () => (
   <div style={{ ...page, padding: `${PAD - 10}px ${PAD}px` }}>
     <Keyframes />
     <Backdrop>
       <Glow left={640} top={-260} size={720} color="rgba(232,121,249,0.12)" />
     </Backdrop>
-    <Eyebrow>November 2020</Eyebrow>
-    <Heading>Die Note, die zuletzt kam</Heading>
-    <div style={{ display: 'flex', gap: 36, marginTop: 64, position: 'relative' }}>
-      <Steps>
-        <Step>
-          <StatCard size={68} value="5. Nov 2020" label="Ausgabetag der neuen Note" sub="vorgestellt bereits am 8. Juli 2020" />
-        </Step>
-        <Step>
-          <StatCard size={88} value="14 Monate" label="nach den anderen Werten" sub="¥50, ¥20, ¥10 und ¥1 kamen im August 2019" />
-        </Step>
-        <Step>
-          <StatCard value="Nr. 3" label="Ausgabe der fünften Serie" sub="nach der 1999er- und der 2005er-Auflage" />
-        </Step>
-      </Steps>
+    <Eyebrow>Die Geschichte hinter der Banknote</Eyebrow>
+    <Heading>Drei Motive, eine Botschaft</Heading>
+    <div style={{ display: 'flex', gap: 26, marginTop: 44, alignItems: 'flex-start', position: 'relative' }}>
+      <HistPanel src={mao} alt="Mao Zedong" caption="Mao Zedong — Staatsgründer" w={258} h={330} />
+      <HistPanel src={mountTai} alt="Der heilige Berg Taishan" caption="Berg Taishan — Stabilität &amp; Würde" w={474} h={304} />
+      <HistPanel src={narzisse} alt="Narzisse" caption="Narzisse — chinesisches Kultursymbol" w={330} h={330} />
+      <HistPanel src={storyNote} alt="5-Yuan-Note, Vorder- und Rückseite" caption="Die Note: Vorder- &amp; Rückseite" w={398} h={323} />
     </div>
-    <div style={{ marginTop: 56, fontSize: 27, color: muted, position: 'relative' }}>
-      Der Grund für die Pause: Die Volksbank ließ für den 5er neue Druck- und Sicherheitstechniken testen —
-      die 1999er-Auflage war wegen hochwertiger Fälschungen bereits 2018 vorgezogen aus dem Verkehr gezogen worden.
+    <div style={{ display: 'flex', gap: 16, marginTop: 40, position: 'relative', flexWrap: 'wrap' }}>
+      <Chip>Motiv: Mao Zedong — Rolle: Identifikation</Chip>
+      <Chip>Nationale Identität</Chip>
+      <Chip>Politische &amp; gesellschaftliche Aussagen</Chip>
+      <Chip>Mehrere Sprachen</Chip>
     </div>
     <Footer />
   </div>
@@ -542,43 +472,46 @@ const Design: Page = () => (
     <Backdrop>
       <Glow left={1200} top={620} size={620} color="rgba(139,92,246,0.15)" />
     </Backdrop>
-    <Eyebrow>Gestaltung &amp; Symbolik</Eyebrow>
-    <Heading>Mao, Blüte und heiliger Berg</Heading>
-    <div style={{ display: 'flex', gap: 56, marginTop: 44, position: 'relative' }}>
-      <div style={{ flex: 1 }}>
-        <img src={noteFront} alt="Vorderseite: Mao-Porträt und Narzissen" width={720} height={335} style={noteShadow} />
-        <DesignCap
-          title="Vorderseite — Mao &amp; Narzisse"
-          lines="Porträt von Mao Zedong nach Liu Wenxi, umrankt von Narzissen-Blüten (水仙花)."
-        />
-      </div>
-      <div style={{ flex: '0 0 780px' }}>
-        <MorphElement id="y5-back">
-          <div
-            style={{
-              background: panel,
-              border: `1px solid ${panelLine}`,
-              borderRadius: 26,
-              padding: 20,
-              width: 760,
-            }}
-          >
-            <img src={noteBack} alt="Rückseite: der Berg Taishan" width={720} height={335} style={{ ...noteShadow, borderRadius: 12 }} />
-            <div style={{ fontSize: 25, color: muted, marginTop: 16, textAlign: 'center' }}>
-              Rückseite — der Berg Taishan (泰山)
-            </div>
-          </div>
-        </MorphElement>
-        <div style={{ fontSize: 26, color: muted, lineHeight: 1.45, marginTop: 14, width: 760 }}>
-          Der erste der fünf heiligen Berge Chinas — UNESCO-Welterbe, mit der Felsinschrift 五岳独尊.
+    <Eyebrow>Gestaltung &amp; Bedeutung</Eyebrow>
+    <Heading>Vorder- &amp; Rückseite im Detail</Heading>
+    <div style={{ display: 'flex', gap: 24, marginTop: 40, alignItems: 'flex-start', position: 'relative' }}>
+      <div>
+        <img src={noteFront} alt="Vorderseite: Mao-Porträt und Narzissen" width={620} height={289} style={noteShadow} />
+        <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--osd-accent)', marginTop: 22 }}>Vorderseite</div>
+        <div style={{ fontSize: 26, lineHeight: 1.6, marginTop: 10 }}>
+          <div>• Kontrast: beige · violett · blau-grün</div>
+          <div>• Porträt: Mao Zedong</div>
+          <div>• Staatswappen der VR China</div>
+          <div>• Blumenornament: Narzisse</div>
         </div>
       </div>
-    </div>
-    <div style={{ display: 'flex', gap: 20, marginTop: 44, position: 'relative' }}>
-      <Chip>Blüte: Narzisse 水仙花</Chip>
-      <Chip>Berg: Taishan 泰山</Chip>
-      <Chip>Porträt: Liu Wenxi</Chip>
-      <Chip>5 Sprachen + Braille</Chip>
+      <div>
+        <MorphElement id="y5-back">
+          <img src={noteBack} alt="Rückseite: der Berg Taishan" width={620} height={289} style={{ ...noteShadow, borderRadius: 12 }} />
+        </MorphElement>
+        <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--osd-accent)', marginTop: 22 }}>Rückseite</div>
+        <div style={{ fontSize: 26, lineHeight: 1.6, marginTop: 10 }}>
+          <div>• Sonnenaufgang auf dem Taishan</div>
+          <div>• Provinz Shandong</div>
+          <div>• „ZHONGGUO RENMIN YINHANG“ — mehrsprachig</div>
+          <div>• Lila — Trennung der Werte</div>
+        </div>
+      </div>
+      <div
+        style={{
+          background: panel,
+          border: `1px solid ${panelLine}`,
+          borderRadius: 26,
+          padding: 16,
+          textAlign: 'center',
+          boxSizing: 'border-box',
+        }}
+      >
+        <img src={pboc} alt="Volksbank Chinas — Zentrale Beijing" width={330} height={248} style={{ ...noteShadow, objectFit: 'cover', borderRadius: 14 }} />
+        <div style={{ fontSize: 23, color: muted, marginTop: 14, lineHeight: 1.35 }}>
+          Herausgeber: Volksbank Chinas
+        </div>
+      </div>
     </div>
     <Footer />
   </div>
@@ -765,40 +698,56 @@ const Sicherheit: Page = () => (
     <Backdrop>
       <Glow left={900} top={700} size={700} color="rgba(139,92,246,0.13)" />
     </Backdrop>
-    <Eyebrow>Sicherheitsmerkmale · Überblick</Eyebrow>
-    <Heading>Hightech auf kleinem Format</Heading>
-    <div style={{ display: 'flex', gap: 44, marginTop: 44, position: 'relative' }}>
+    <Eyebrow>Sicherheitsmerkmale</Eyebrow>
+    <Heading>Schutz vor Fälschung</Heading>
+    <div style={{ display: 'flex', gap: 60, marginTop: 40, alignItems: 'flex-start', position: 'relative' }}>
       <div style={{ flex: 1 }}>
         <Steps>
           <Step>
-            <FeatureCard icon={<IcoWatermark />} name="Wasserzeichen" hint="Narzisse + helle „5“" />
+            <DetailRow
+              icon={<IcoWatermark />}
+              title="Wasserzeichen"
+              text="Narzisse + helle „5“ — gegen das Licht sichtbar"
+            />
           </Step>
           <Step>
-            <FeatureCard icon={<IcoThread />} name="Sicherheitslinie" hint="holografisch, magnetisch, fensterführend" />
+            <DetailRow
+              icon={<IcoTilt />}
+              title="Kippfarbe"
+              text="die große „5“ wechselt von Gold zu Grün"
+            />
           </Step>
           <Step>
-            <FeatureCard icon={<IcoTilt />} name="Kippfarbe" hint="die große 5: Gold → Grün" />
+            <DetailRow
+              icon={<IcoRegister />}
+              title="Fühlbare Linien"
+              text="im Porträt von Mao Zedong spürbar geprägt"
+            />
           </Step>
           <Step>
-            <FeatureCard icon={<IcoHologram />} name="Versteckte Ziffer" hint="„5“ erscheint erst beim Kippen" />
+            <DetailRow
+              icon={<IcoThread />}
+              title="Sicherheitsfaden"
+              text="auf der 2020er Note entfallen — die letzte Ausgabe hatte ihn"
+            />
           </Step>
         </Steps>
       </div>
-      <div style={{ flex: 1 }}>
-        <Steps>
-          <Step>
-            <FeatureCard icon={<IcoRegister />} name="Braille &amp; Fühlstreifen" hint="ertastbar für Sehbehinderte" />
-          </Step>
-          <Step>
-            <FeatureCard icon={<IcoMicro />} name="Mikroschrift" hint="feinste Schrift im Muster" />
-          </Step>
-          <Step>
-            <FeatureCard icon={<IcoUv />} name="UV-Merkmale" hint="gelbe Ziffer &amp; Fasern leuchten" />
-          </Step>
-          <Step>
-            <FeatureCard icon={<IcoEurion />} name="EURion-Konstellation" hint="Kreis-Schutz gegen Kopierer" />
-          </Step>
-        </Steps>
+      <div style={{ flex: '0 0 560px' }}>
+        <img src={noteFront} alt="5-Yuan-Note 2020 — Vorderseite" width={560} height={261} style={noteShadow} />
+        <div style={{ fontSize: 22, color: muted, marginTop: 12, textAlign: 'center' }}>
+          Die 2020er Note — ohne Sicherheitsfaden
+        </div>
+        <img
+          src={note2005}
+          alt="5-Yuan-Note 2005 — mit Sicherheitsfaden"
+          width={560}
+          height={263}
+          style={{ ...noteShadow, marginTop: 24 }}
+        />
+        <div style={{ fontSize: 22, color: muted, marginTop: 12, textAlign: 'center' }}>
+          Vorherige Ausgabe (2005) — mit sichtbarem Sicherheitsfaden
+        </div>
       </div>
     </div>
     <Footer />
@@ -1270,8 +1219,8 @@ const KursChf: Page = () => {
 /* ================= 13 · Inflation ================= */
 
 const INFL: Array<[number, number]> = [
-  [2015, 1.4], [2016, 2.0], [2017, 1.6], [2018, 2.1], [2019, 2.9], [2020, 2.4],
-  [2021, 1.0], [2022, 2.0], [2023, 0.2], [2024, 0.2], [2025, 0.1],
+  [2020, 0.8], [2021, 0.9], [2022, 1.2], [2023, 1.6], [2024, 2.3], [2025, 3.4],
+  [2026, 4.5],
 ];
 
 const INFW = 1660;
@@ -1279,7 +1228,7 @@ const INFH = 440;
 const infBarW = 84;
 const infStep = (INFW - 140) / INFL.length;
 const infX = (i: number) => 90 + i * infStep;
-const infH = (v: number) => (v / 3.0) * 330;
+const infH = (v: number) => (v / 5.0) * 330;
 const infY = (v: number) => 380 - infH(v);
 
 const InflChart = ({ animate }: { animate: boolean }) => (
@@ -1293,8 +1242,8 @@ const InflChart = ({ animate }: { animate: boolean }) => (
         width={infBarW}
         height={infH(v)}
         rx={7}
-        fill={yr === 2020 ? '#e879f9' : '#a78bfa'}
-        opacity={yr === 2020 ? 1 : 0.66}
+        fill={yr === 2026 ? '#e879f9' : '#a78bfa'}
+        opacity={yr === 2026 ? 1 : 0.66}
         style={{
           transformBox: 'fill-box',
           transformOrigin: 'bottom',
@@ -1302,7 +1251,7 @@ const InflChart = ({ animate }: { animate: boolean }) => (
         }}
       />
     ))}
-    {[4, 5].map((i) => (
+    {[0, INFL.length - 1].map((i) => (
       <text
         key={i}
         x={infX(i) + infBarW / 2}
@@ -1323,42 +1272,48 @@ const InflChart = ({ animate }: { animate: boolean }) => (
   </svg>
 );
 
-const Inflation: Page = () => {
+const Wirtschaft: Page = () => {
   const active = useIsActivePage();
   return (
-    <div style={{ ...page, padding: '90px 110px' }}>
+    <div style={{ ...page, padding: '76px 110px' }}>
       <Keyframes />
       <Backdrop>
         <Glow left={1180} top={620} size={640} color="rgba(232,121,249,0.12)" />
       </Backdrop>
-      <Eyebrow>Wirtschaft &amp; Wert · Inflation</Eyebrow>
+      <Eyebrow>Wirtschaftlicher Kontext</Eyebrow>
       <div
         style={{
           fontFamily: 'var(--osd-font-display)',
-          fontSize: 74,
+          fontSize: 64,
           fontWeight: 800,
           lineHeight: 1.12,
-          margin: '22px 0 0',
+          margin: '18px 0 0',
         }}
       >
-        Was 2020 <span style={gradText}>5&nbsp;¥</span> kostete, kostet heute{' '}
-        <span style={gradText}>≈ 5,18&nbsp;¥</span>
+        Inflation seit Ausgabe: <span style={gradText}>0,8 % → 4,5 %</span>
       </div>
       <div
         style={{
           background: panel,
           border: `1px solid ${panelLine}`,
           borderRadius: 'var(--osd-radius)',
-          padding: '24px 30px 6px',
-          marginTop: 34,
+          padding: '20px 26px 2px',
+          marginTop: 26,
           position: 'relative',
         }}
       >
         <InflChart animate={active} />
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 28, position: 'relative' }}>
-        <div style={{ fontSize: 24, color: muted }}>Jahresinflation China (VPI) · Quelle: Weltbank</div>
-        <Chip>Kaufkraft seit Ausgabe: ≈ −3 %</Chip>
+      <div style={{ display: 'flex', gap: 16, marginTop: 26, position: 'relative', flexWrap: 'wrap', maxWidth: 1660 }}>
+        <Chip>5 ¥ ≈ 62 Rappen — Kurs wechselt ständig</Chip>
+        <Chip>Wechselkurs sagt zu wenig über Kaufkraft</Chip>
+        <Chip>Import- &amp; Export-Nation</Chip>
+        <Chip>KP regiert — Staat mit großem Einfluss</Chip>
+        <Chip>Stadt / Land: hohe Lohndifferenz</Chip>
+        <Chip>Unternehmenswettbewerb: kapitalistische Züge</Chip>
+      </div>
+      <div style={{ fontSize: 22, color: muted, marginTop: 20, position: 'relative' }}>
+        Jahresinflation China (VPI) 2020–2026 · eigene Darstellung
       </div>
       <Footer />
     </div>
@@ -1449,7 +1404,7 @@ const Heute: Page = () => (
   </div>
 );
 
-/* ================= 15 · Fazit ================= */
+/* ================= shared · Takeaway-Karten ================= */
 
 const Takeaway = ({
   title,
@@ -1472,14 +1427,63 @@ const Takeaway = ({
   </div>
 );
 
-const Fazit: Page = () => (
+/* ================= 15 · Persönliche Story ================= */
+
+const StoryFrame = ({ src, alt, label }: { src: string; alt: string; label: string }) => (
+  <div
+    style={{
+      width: 314,
+      background: panel,
+      border: `1px solid ${panelLine}`,
+      borderRadius: 'var(--osd-radius)',
+      padding: 14,
+      boxSizing: 'border-box',
+    }}
+  >
+    <img
+      src={src}
+      alt={alt}
+      style={{ width: '100%', height: 300, objectFit: 'cover', borderRadius: 14, display: 'block' }}
+    />
+    <div style={{ fontSize: 22, color: muted, marginTop: 12, textAlign: 'center', lineHeight: 1.3 }}>{label}</div>
+  </div>
+);
+
+const Story: Page = () => (
+  <div style={{ ...page, padding: `${PAD - 20}px ${PAD}px` }}>
+    <Keyframes />
+    <Backdrop>
+      <Glow left={-200} top={-200} size={620} color="rgba(139,92,246,0.15)" />
+      <Glow left={1100} top={700} size={600} color="rgba(232,121,249,0.12)" />
+    </Backdrop>
+    <Eyebrow>Eigene Bewertung · Persönliche Story</Eyebrow>
+    <Heading>Mein Tag mit der 5-¥-Note</Heading>
+    <div style={{ display: 'flex', gap: 20, marginTop: 48, position: 'relative' }}>
+      <Steps>
+        <Step><StoryFrame src={baozi} alt="Baozi — gedämpfte Brötchen" label="Snack: Baozi" /></Step>
+        <Step><StoryFrame src={arcade} alt="Arcade-Halle in China" label="In der Arcade" /></Step>
+        <Step><StoryFrame src={spiel} alt="Das gespielte Spiel" label="Das gespielte Spiel" /></Step>
+        <Step><StoryFrame src={tokens} alt="Sehr viele Tokens durch den Jackpot" label="Jackpot — sehr viele Tokens" /></Step>
+        <Step><StoryFrame src={gewinn} alt="Den Gewinn eingetauscht" label="Den Gewinn eingetauscht" /></Step>
+      </Steps>
+    </div>
+    <div style={{ marginTop: 44, fontSize: 26, color: muted, position: 'relative' }}>
+      Von der Note zum Snack, vom Automaten zum Gewinn — so erlebe ich die 5 ¥ im Alltag.
+    </div>
+    <Footer />
+  </div>
+);
+
+/* ================= 16 · Eigene Bewertung ================= */
+
+const Bewertung: Page = () => (
   <div style={{ ...page, padding: `${PAD - 20}px ${PAD}px` }}>
     <Keyframes />
     <Backdrop>
       <Glow left={620} top={-240} size={720} color="rgba(232,121,249,0.13)" />
       <Glow left={-220} top={640} size={620} color="rgba(139,92,246,0.15)" />
     </Backdrop>
-    <Eyebrow>Fazit</Eyebrow>
+    <Eyebrow>Eigene Bewertung</Eyebrow>
     <div
       style={{
         fontFamily: 'var(--osd-font-display)',
@@ -1491,25 +1495,27 @@ const Fazit: Page = () => (
     >
       Danke — <span style={gradText}>Fragen? 谢谢</span>
     </div>
-    <div style={{ display: 'flex', gap: 32, position: 'relative' }}>
+    <div style={{ display: 'flex', gap: 28, position: 'relative' }}>
       <Takeaway
-        title="Symbol"
-        text="Mao, Narzisse, Taishan — auf kleinstem Format erzählt die Note Chinas Selbstbild."
+        title="Mount Tai"
+        text="Der heilige Berg Chinas steht für Stabilität &amp; Würde — mitten auf dem Geldschein."
       />
       <Takeaway
-        title="Technik"
-        text="Farbwechsel-Ziffer, Narzissen-Wasserzeichen, fühlbare Linien — ein Kleinschein mit Großschein-Schutz."
+        title="Wert-Kontrast"
+        text="Kleiner Geldwert — aber hohe kulturelle Bedeutung."
       />
       <Takeaway
-        title="Wert"
-        text="0,62 CHF und nur −3 % Kaufkraft seit 2020 — die lila Note ist bemerkenswert stabil."
+        title="Digitalisierung"
+        text="Mobile Payment verdrängt das Bargeld — die Note stirbt langsam aus."
       />
     </div>
-    <div style={{ marginTop: 60, fontSize: 21, color: muted, lineHeight: 1.6, position: 'relative' }}>
-      Quellen: Volksbank Chinas (PBOC) · Weltbank (VPI China) · EZB-Referenzkurse CNY/CHF (Stand Sept 2026) ·
-      Wikipedia (EN/ZH: „Fifth series of the renminbi“ / 第五套人民币).
-      <br />
-      Notenabbildungen: Design © PBOC via Wikipedia (zh).
+    <div style={{ display: 'flex', gap: 28, marginTop: 28, position: 'relative' }}>
+      <Takeaway title="Pro" text="Edles Violett &amp; schöne Naturmotive: Narzisse &amp; Mount Tai." />
+      <Takeaway title="Contra" text="Mao Zedong auf allen Noten — das finde ich eintönig." />
+    </div>
+    <div style={{ marginTop: 44, fontSize: 21, color: muted, lineHeight: 1.6, position: 'relative' }}>
+      Quellen: Volksbank Chinas (PBOC) · eigene Darstellung Inflation 2020–2026 (0,8 % → 4,5 %) ·
+      Wikipedia („Fifth series of the renminbi“ / 第五套人民币). Notenabbildungen: Design © PBOC.
     </div>
     <Footer />
   </div>
@@ -1525,8 +1531,8 @@ export const meta: SlideMeta = {
 export default [
   Cover,
   Agenda,
-  Geburt,
-  Spaet,
+  Geschichte1,
+  Geschichte2,
   Design,
   Herstellung,
   Sicherheit,
@@ -1535,7 +1541,8 @@ export default [
   Kaufkraft,
   Handy,
   KursChf,
-  Inflation,
+  Wirtschaft,
   Heute,
-  Fazit,
+  Story,
+  Bewertung,
 ] satisfies Page[];

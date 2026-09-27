@@ -1,4 +1,4 @@
-# update.ps1 — aktualisiert die Online-Praesentation
+# update.ps1 - aktualisiert die Online-Praesentation
 # Kopiert das Deck aus T2000 und veroeffentlicht es auf GitHub Pages.
 # Ausfuehren im Repo-Ordner:  .\update.ps1
 
@@ -16,7 +16,7 @@ Copy-Item -Recurse $src $deck
 
 # Nichts geaendert? Dann stoppen.
 if (-not (git status --porcelain)) {
-    Write-Host "Keine Aenderungen gefunden — nichts zu tun." -ForegroundColor Yellow
+    Write-Host "Keine Aenderungen gefunden - nichts zu tun." -ForegroundColor Yellow
     exit 0
 }
 
